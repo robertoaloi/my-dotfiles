@@ -6,7 +6,7 @@ bind '"\e[B": history-search-forward'
 # Show active GIT branch
 # Source: http://jasonseifer.com/2010/05/05/osx-post-install-guide-4
 #         https://github.com/blog/297-dirty-git-state-in-your-prompt
-parse_git_branch() {
+pgb() {
   git branch --no-color 2> /dev/null | \
     sed -e '/^[^*]/d' -e "s/* \(.*\)/ →\ \1$(parse_git_dirty)/"
 }
@@ -17,4 +17,16 @@ function parse_git_dirty {
 }
 
 export GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='\[\e[1;37m\][\[\e[1;35m\]\u\[\e[1;37m\]@\[\e[1;32m\]\h\[\e[1;37m\]:\[\e[1;36m\]\w\[\e[1;33m\]$(parse_git_branch)\[\e[1;37m\]]\n$ \[\e[0m\]'
+
+# Colours
+cr='\e[0m'    # Colour Reset
+
+# Bold
+cg='\e[1;32m' # Green
+cy='\e[1;33m' # Yellow
+cb='\e[1;34m' # Blue
+cp='\e[1;35m' # Purple
+cc='\e[1;36m' # Cyan
+cw='\e[1;37m' # White
+
+export PS1="\[${cw}\][\[${cp}\]\u\[${cw}\]@\[${cg}\]\h\[${cw}\]:\[${cc}\]\w\[${cy}\]$(pgb)\[${cw}\]]\n$ \[${cr}\]"
