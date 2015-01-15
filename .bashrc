@@ -13,7 +13,7 @@ parse_git_branch() {
 
 function parse_git_dirty {
   gs=$(git status 2> /dev/null | tail -n1)
-  [[ $gs != "nothing to commit (working directory clean)" ]] && echo " *"
+  [[ $gs != "nothing to commit, working directory clean" ]] && echo " *"
 }
 
 export GIT_PS1_SHOWDIRTYSTATE=true
