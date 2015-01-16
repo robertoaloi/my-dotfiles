@@ -30,3 +30,8 @@ cc='\e[1;36m' # Cyan
 cw='\e[1;37m' # White
 
 export PS1="\[${cw}\][\[${cp}\]\u\[${cw}\]@\[${cg}\]\h\[${cw}\]:\[${cc}\]\w\[${cy}\]$(pgb)\[${cw}\]]\n$ \[${cr}\]"
+
+# Internationalization Environment Variables
+export LANG=en_US.UTF-8
+export LC_TYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
